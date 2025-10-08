@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Jordy's Perfumes</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+    <script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              colors: {
+                "primary": "#f0b642",
+                "background-light": "#f8f7f6",
+                "background-dark": "#221c10",
+              },
+              fontFamily: {
+                "display": ["Manrope"]
+              },
+              borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+            },
+          },
+        }
+    </script>
+    <style>
+        .range-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 1rem;
+            height: 1rem;
+            border-radius: 9999px;
+            background-color: #f0b642;
+            cursor: pointer;
+            margin-top: -4px;
+        }
+        .range-slider::-moz-range-thumb {
+            width: 1rem;
+            height: 1rem;
+            border-radius: 9999px;
+            background-color: #f0b642;
+            cursor: pointer;
+        }
+        .page-section {
+            display: none;
+        }
+        .page-section.active {
+            display: block;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-background-dark dark:text-background-light">
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+    
+    <!-- Header Navegación -->
+    <header class="flex items-center justify-between whitespace-nowrap border-b border-primary/20 px-10 py-4">
+        <div class="flex items-center gap-3 text-lg font-bold">
+            <span class="material-symbols-outlined text-primary text-3xl">fragrance</span>
+            <h2 class="text-xl">Perfumes Jordy's</h2>
+        </div>
+        <nav class="hidden md:flex flex-1 justify-center items-center gap-8 text-sm font-medium">
+            <button class="nav-btn hover:text-primary transition-colors" data-page="inicio">Inicio</button>
+            <button class="nav-btn hover:text-primary transition-colors" data-page="perfumes">Perfumes</button>
+            <button class="nav-btn hover:text-primary transition-colors" data-page="producto">Producto</button>
+            <button class="nav-btn hover:text-primary transition-colors" data-page="nosotros">Nosotros</button>
+            <button class="nav-btn hover:text-primary transition-colors" data-page="contacto">Contacto</button>
+        </nav>
+        <div class="flex items-center gap-2">
+            <button class="flex items-center justify-center rounded-lg h-10 px-4 bg-primary/20 dark:bg-primary/30 hover:bg-primary/40 dark:hover:bg-primary/50 transition-colors">
+                <span class="material-symbols-outlined text-lg">shopping_bag</span>
+            </button>
+            <button class="flex items-center justify-center rounded-lg h-10 w-10 bg-primary/20 dark:bg-primary/30 hover:bg-primary/40 dark:hover:bg-primary/50 transition-colors">
+                <span class="material-symbols-outlined text-lg">search</span>
+            </button>
+            <button class="md:hidden flex items-center justify-center rounded-lg h-10 w-10 bg-primary/20 dark:bg-primary/30 hover:bg-primary/40 dark:hover:bg-primary/50 transition-colors">
+                <span class="material-symbols-outlined text-lg">menu</span>
+            </button>
+        </div>
+    </header>
+
+    <main class="flex-1">
+        <!-- PÁGINA DE INICIO -->
+        <div id="inicio" class="page-section active">
+            <div class="px-4 md:px-10 lg:px-20 xl:px-40 py-10">
+                <div class="mx-auto max-w-6xl">
+                    <!-- Hero Section -->
+                    <section class="@container mb-16">
+                        <div class="@[480px]:p-4">
+                            <div class="relative flex min-h-[480px] flex-col gap-6 items-center justify-center p-4 rounded-xl overflow-hidden bg-cover bg-center" style='background-image: linear-gradient(rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.5) 100%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuAXHGMpySETkQK_yCtI9yFsnVDLbOsn60gKCcVoNY_crqoY99yz0amKL1gehko-l9iVQ-oGAPu_-GTs_d5xH7ZpuTGDBON9YMuLbFswl_X6ANODY89ycLIe0YmTXPVzsVnRO02YvrGTWOm548B2evNXZV54H3d3oCFvBQQrztZlGdEL_LcX9GWeBUgSyJNXRYEXj0WQBblbKv3IST1qpvzYsFiw42HU8uAZKL1Atm4Cp13tbds-d8hxyf387U8qNhwNPxml_NckmqkI");'>
+                                <div class="flex flex-col gap-4 text-center text-white">
+                                    <h1 class="text-4xl font-extrabold tracking-tighter @[480px]:text-6xl">Descubre Tu Aroma Ideal</h1>
+                                    <p class="text-base @[480px]:text-lg max-w-2xl mx-auto">Explora aqui en Jordy's Perfumes nuestra colección de fragancias, diseñadas para la generación moderna.</p>
+                                </div>
+                                <button class="flex items-center justify-center rounded-lg h-12 px-6 bg-primary text-background-dark text-base font-bold tracking-wide hover:opacity-90 transition-opacity">
+                                    <span>Comprar Ahora</span>
+                                </button>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Categorías -->
+                    <section class="mb-16">
+                        <h2 class="text-3xl font-bold tracking-tight px-4 pb-6">Categorías</h2>
+                        <div class="border-b border-primary/20 px-4">
+                            <div class="flex gap-8">
+                                <button class="category-btn flex flex-col items-center justify-center border-b-2 border-primary text-primary pb-3 pt-2" data-category="hombres">
+                                    <p class="text-sm font-bold tracking-wide">Hombres</p>
+                                </button>
+                                <button class="category-btn flex flex-col items-center justify-center border-b-2 border-transparent text-background-dark/60 dark:text-background-light/60 hover:text-primary dark:hover:text-primary pb-3 pt-2 transition-colors" data-category="mujeres">
+                                    <p class="text-sm font-bold tracking-wide">Mujeres</p>
+                                </button>
+                                <button class="category-btn flex flex-col items-center justify-center border-b-2 border-transparent text-background-dark/60 dark:text-background-light/60 hover:text-primary dark:hover:text-primary pb-3 pt-2 transition-colors" data-category="unisex">
+                                    <p class="text-sm font-bold tracking-wide">Unisex</p>
+                                </button>
+                                <button class="category-btn flex flex-col items-center justify-center border-b-2 border-transparent text-background-dark/60 dark:text-background-light/60 hover:text-primary dark:hover:text-primary pb-3 pt-2 transition-colors" data-category="limitadas">
+                                    <p class="text-sm font-bold tracking-wide">Ediciones Limitadas</p>
+                                </button>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Productos Destacados -->
+                    <section class="mb-16">
+                        <h2 class="text-3xl font-bold tracking-tight px-4 pb-6">Productos Destacados</h2>
+                        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6 p-4">
+                            <!-- Producto 1 -->
+                            <div class="flex flex-col gap-3 group product-card" data-product="brisa-acuatica">
+                                <div class="w-full bg-center bg-no-repeat aspect-[3/4] bg-cover rounded-lg overflow-hidden">
+                                    <div class="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-300" style='background-image: url("https://attoperfumes.com.co/cdn/shop/products/WhatsAppImage2022-05-11at3.17.12PM.jpg?v=1652300353");'></div>
+                                </div>
+                                <div>
+                                    <p class="text-base font-semibold">Valentino Uomo</p>
+                                    <p class="text-sm text-background-dark/60 dark:text-background-light/60">Un aroma refrescante para el hombre activo.</p>
+                                </div>
+                            </div>
+                            <!-- Más productos... -->
+                            <!-- Producto 2 -->
+                            <div class="flex flex-col gap-3 group product-card" data-product="flor-citrica">
+                                <div class="w-full bg-center bg-no-repeat aspect-[3/4] bg-cover rounded-lg overflow-hidden">
+                                    <div class="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-300" style='background-image: url("https://mwhite.com.co/cdn/shop/files/perfume-armaf-odyssey-mandarin-sky-100ml-perfumes-145.webp?v=1728598698");'></div>
+                                </div>
+                                <div>
+                                    <p class="text-base font-semibold">Odyssey Mandarin Sky</p>
+                                    <p class="text-sm text-background-dark/60 dark:text-background-light/60">Notas citricas y frescas para cualquier ocasión.</p>
+                                </div>
+                            </div>
+                            <!-- Producto 3 -->
+                            <div class="flex flex-col gap-3 group product-card" data-product="noir-elegance">
+                                <div class="w-full bg-center bg-no-repeat aspect-[3/4] bg-cover rounded-lg overflow-hidden">
+                                    <div class="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-300" style='background-image: url("https://fraganciasdelujo.com/cdn/shop/products/versace-dylan-blue-perfume.jpg?v=1652300353");'></div>
+                                </div>
+                                <div>
+                                    <p class="text-base font-semibold">Versace Dylan Blue</p>
+                                    <p class="text-sm text-background-dark/60 dark:text-background-light/60">Intenso y misterioso, para noches elegantes.</p>
+                                </div>
+                            </div>
+                            <!-- Producto 4 -->
+                            <div class="flex flex-col gap-3 group product-card" data-product="rosa-intensa">
+                                <div class="w-full bg-center bg-no-repeat aspect-[3/4] bg-cover rounded-lg overflow-hidden">
+                                    <div class="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-300" style='background-image: url("https://www.perfumeriaslaguna.com/images/productos/rosa-intensa.jpg");'></div>
+                                </div>
+                                <div>
+                                    <p class="text-base font-semibold">Rosa Intensa</p>
+                                    <p class="text-sm text-background-dark/60 dark:text-background-light/60">Romántico y femenino, ideal para el día.</p>
+                                </div>
+                            </div>
+                            <!-- Producto 5 -->
+                            <div class="flex flex-col gap-3 group product-card" data-product="citrus-bliss">
+                                <div class="w-full bg-center bg-no-repeat aspect-[3/4] bg-cover rounded-lg overflow-hidden">
+                                    <div class="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-300" style='background-image: url("https://www.fragrantica.com/images/perfume/123/123456.jpg");'></div>
+                                </div>
+                                <div>
+                                    <p class="text-base font-semibold">Citrus Bliss</p>
+                                    <p class="text-sm text-background-dark/60 dark:text-background-light/60">Energía cítrica para días soleados.</p>
+                                </div>
+                            </div>
+                            <!-- Producto 6 -->
+                            <div class="flex flex-col gap-3 group product-card" data-product="amber-night">
+                                <div class="w-full bg-center bg-no-repeat aspect-[3/4] bg-cover rounded-lg overflow-hidden">
+                                    <div class="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-300" style='background-image: url("https://www.perfumespremium.com/images/amber-night.jpg");'></div>
+                                </div>
+                                <div>
+                                    <p class="text-base font-semibold">Amber Night</p>
+                                    <p class="text-sm text-background-dark/60 dark:text-background-light/60">Notas cálidas y ambarinas para la noche.</p>
+                                </div>
+                            </div>
+                            <!-- Producto 7 -->
+                            <div class="flex flex-col gap-3 group product-card" data-product="gardenia-blanca">
+                                <div class="w-full bg-center bg-no-repeat aspect-[3/4] bg-cover rounded-lg overflow-hidden">
+                                    <div class="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-300" style='background-image: url("https://www.perfumeriaslaguna.com/images/productos/gardenia-blanca.jpg");'></div>
+                                </div>
+                                <div>
+                                    <p class="text-base font-semibold">Gardenia Blanca</p>
+                                    <p class="text-sm text-background-dark/60 dark:text-background-light/60">Fresco y floral, perfecto para primavera.</p>
+                                </div>
+                            </div>
+                            <!-- Producto 8 -->
+                            <div class="flex flex-col gap-3 group product-card" data-product="oud-royal">
+                                <div class="w-full bg-center bg-no-repeat aspect-[3/4] bg-cover rounded-lg overflow-hidden">
+                                    <div class="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-300" style='background-image: url("https://www.fragrantica.com/images/perfume/oud-royal.jpg");'></div>
+                                </div>
+                                <div>
+                                    <p class="text-base font-semibold">Oud Royal</p>
+                                    <p class="text-sm text-background-dark/60 dark:text-background-light/60">Exótico y lujoso, para ocasiones especiales.</p>
+                                </div>
+                            </div>
+                            <!-- Producto 9 -->
+                            <div class="flex flex-col gap-3 group product-card" data-product="vanilla-dream">
+                                <div class="w-full bg-center bg-no-repeat aspect-[3/4] bg-cover rounded-lg overflow-hidden">
+                                    <div class="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-300" style='background-image: url("https://www.perfumespremium.com/images/vanilla-dream.jpg");'></div>
+                                </div>
+                                <div>
+                                    <p class="text-base font-semibold">Vanilla Dream</p>
+                                    <p class="text-sm text-background-dark/60 dark:text-background-light/60">Dulce y envolvente, para momentos acogedores.</p>
+                                </div>
+                            </div>
+                            <!-- Producto 10 -->
+                            <div class="flex flex-col gap-3 group product-card" data-product="coco-paradise">
+                                <div class="w-full bg-center bg-no-repeat aspect-[3/4] bg-cover rounded-lg overflow-hidden">
+                                    <div class="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-300" style='background-image: url("https://www.fragrantica.com/images/perfume/coco-paradise.jpg");'></div>
+                                </div>
+                                <div>
+                                    <p class="text-base font-semibold">Coco Paradise</p>
+                                    <p class="text-sm text-background-dark/60 dark:text-background-light/60">Notas tropicales para el verano.</p>
+                                </div>
+                            </div>
+                            <!-- Producto 11 -->
+                            <div class="flex flex-col gap-3 group product-card" data-product="spicy-woods">
+                                <div class="w-full bg-center bg-no-repeat aspect-[3/4] bg-cover rounded-lg overflow-hidden">
+                                    <div class="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-300" style='background-image: url("https://www.perfumeriaslaguna.com/images/productos/spicy-woods.jpg");'></div>
+                                </div>
+                                <div>
+                                    <p class="text-base font-semibold">Spicy Woods</p>
+                                    <p class="text-sm text-background-dark/60 dark:text-background-light/60">Aromas especiados y madera para el hombre moderno.</p>
+                                </div>
+                            </div>
+                            <!-- Producto 12 -->
+                            <div class="flex flex-col gap-3 group product-card" data-product="fresh-mint">
+                                <div class="w-full bg-center bg-no-repeat aspect-[3/4] bg-cover rounded-lg overflow-hidden">
+                                    <div class="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-300" style='background-image: url("https://www.fragrantica.com/images/perfume/fresh-mint.jpg");'></div>
+                                </div>
+                                <div>
+                                    <p class="text-base font-semibold">Fresh Mint</p>
+                                    <p class="text-sm text-background-dark/60 dark:text-background-light/60">Refrescante y revitalizante, para todos los días.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Testimonios -->
+                    <section class="mb-16">
+                        <h2 class="text-3xl font-bold tracking-tight px-4 pb-6">Testimonios</h2>
+                        <div class="relative">
+                            <div class="flex overflow-x-auto snap-x snap-mandatory [-ms-scrollbar-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden p-4 gap-6">
+                                <!-- Testimonio 1 -->
+                                <div class="flex-shrink-0 w-full sm:w-1/2 lg:w-1/3 snap-center">
+                                    <div class="flex flex-col gap-4 bg-primary/10 dark:bg-primary/20 p-6 rounded-lg h-full">
+                                        <img alt="Sara M." class="w-24 h-24 rounded-full mx-auto object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDodPara6c-2SOtYbdEvFZjJb70bq5FWTwxCQK-nZxJj554F3blgec372f6k-uqInCWSuPYUi2XF1e_LbaL-91R-sB2UnfpzhgUL0RxraBwikiXVvxWAuJyONTjap5LyX8KOsvHDuv37nWSU4i6z6LyUbfsHT9wzT1RawIKmtV5uuCL8wRASTbLI8aHlH4YpXyoYKrDBHrFB05iCRLNQXVIp7vfV9XdAiuKgt1VY5ncMFrOlPZvuLXDZd3Bq7cjwiFeaonK5ijzy6eK"/>
+                                        <div class="text-center">
+                                            <p class="text-lg font-semibold">Sara M.</p>
+                                            <p class="text-sm text-background-dark/80 dark:text-background-light/80 mt-2">"¡Me encanta la fragancia 'Brisa Acuática'! Es perfecta para mi estilo de vida activo y siempre me deja sintiéndome fresca."</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Más testimonios... -->
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Newsletter -->
+                    <section class="bg-primary/10 dark:bg-primary/20 rounded-xl">
+                        <div class="py-16 px-4 md:px-10">
+                            <div class="flex flex-col gap-4 text-center max-w-2xl mx-auto">
+                                <h2 class="text-3xl font-bold tracking-tight">Mantente Actualizado</h2>
+                                <p class="text-base text-background-dark/80 dark:text-background-light/80">Suscríbete a nuestro boletín para recibir ofertas exclusivas y anuncios de nuevos productos.</p>
+                            </div>
+                            <div class="mt-8 flex justify-center">                                <form class="flex w-full max-w-md rounded-lg overflow-hidden">
+                                    <input class="form-input flex-1 min-w-0 resize-none border-none bg-background-light dark:bg-background-dark text-background-dark dark:text-background-light placeholder:text-background-dark/60 dark:placeholder:text-background-light/60 focus:ring-0 h-12 px-4" placeholder="Ingresa tu correo electrónico" value=""/>
+                                    <button class="flex items-center justify-center h-12 px-6 bg-primary text-background-dark text-sm font-bold tracking-wide hover:opacity-90 transition-opacity" type="submit">
+                                        <span>Suscribirse</span>
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+
+        <!-- PÁGINA DE PERFUMES -->
+        <div id="perfumes" class="page-section">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-10">
+                <div class="flex flex-col gap-8">
+                    <h2 class="text-3xl font-bold text-gray-900 dark:text-white">Perfumes</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
+                        <!-- Filtros -->
+                        <aside class="md:col-span-3 flex flex-col gap-6">
+                            <!-- Filtros de categoría -->
+                            <div>
+                                <h3 class="font-bold mb-4 text-gray-900 dark:text-white">Categoría</h3>
+                                <div class="flex flex-wrap gap-2">
+                                    <button class="filter-btn px-4 py-2 rounded-full text-sm font-medium bg-primary/20 dark:bg-primary/30 text-gray-900 dark:text-white transition-colors hover:bg-primary/40 dark:hover:bg-primary/50" data-filter="hombre">Hombre</button>
+                                    <button class="filter-btn px-4 py-2 rounded-full text-sm font-medium bg-background-light dark:bg-background-dark border border-primary/30 text-gray-800 dark:text-gray-200 transition-colors hover:bg-primary/20 dark:hover:bg-primary/30" data-filter="mujer">Mujer</button>
+                                    <button class="filter-btn px-4 py-2 rounded-full text-sm font-medium bg-background-light dark:bg-background-dark border border-primary/30 text-gray-800 dark:text-gray-200 transition-colors hover:bg-primary/20 dark:hover:bg-primary/30" data-filter="unisex">Unisex</button>
+                                    <button class="filter-btn px-4 py-2 rounded-full text-sm font-medium bg-background-light dark:bg-background-dark border border-primary/30 text-gray-800 dark:text-gray-200 transition-colors hover:bg-primary/20 dark:hover:bg-primary/30" data-filter="limitadas">Ediciones Limitadas</button>
+                                </div>
+                            </div>
+                            <!-- Más filtros... -->
+                        </aside>
+
+                        <!-- Grid de productos -->
+                        <section class="md:col-span-9">
+                            <div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                                <!-- Producto 1 -->
+                                <div class="group product-card" data-product="summer-breeze">
+                                    <div class="relative overflow-hidden rounded-lg">
+                                        <div class="w-full bg-center bg-no-repeat aspect-[3/4] bg-cover rounded-lg" style='background-image: url("https://attoperfumes.com.co/cdn/shop/products/WhatsAppImage2022-05-11at3.17.12PM.jpg?v=1652300353");'></div>
+                                        <div class="absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                            <button class="view-details-btn px-4 py-2 bg-primary text-white rounded-full text-sm font-semibold">Ver Detalles</button>
+                                        </div>
+                                    </div>
+                                    <div class="mt-4">
+                                        <h4 class="font-medium text-gray-800 dark:text-gray-200">Valentino Uomo</h4>
+                                        <p class="text-sm text-gray-500 dark:text-gray-400">$100.000</p>
+                                    </div>
+                                </div>
+                                <!-- Más productos... -->
+                                <!-- Producto 2 -->
+                                <div class="group product-card" data-product="flor-citrica">
+                                    <div class="relative overflow-hidden rounded-lg">
+                                        <div class="w-full bg-center bg-no-repeat aspect-[3/4] bg-cover rounded-lg" style='background-image: url("https://mwhite.com.co/cdn/shop/files/perfume-armaf-odyssey-mandarin-sky-100ml-perfumes-145.webp?v=1728598698");'></div>
+                                        <div class="absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                            <button class="view-details-btn px-4 py-2 bg-primary text-white rounded-full text-sm font-semibold">Ver Detalles</button>
+                                        </div>
+                                    </div>
+                                    <div class="mt-4">
+                                        <h4 class="font-medium text-gray-800 dark:text-gray-200">Odyssey Mandarin Sky</h4>
+                                        <p class="text-sm text-gray-500 dark:text-gray-400">$95.000</p>
+                                    </div>
+                                </div>
+                                <!-- Producto 3 -->
+                                <div class="group product-card" data-product="noir-elegance">
+                                    <div class="relative overflow-hidden rounded-lg">
+                                        <div class="w-full bg-center bg-no-repeat aspect-[3/4] bg-cover rounded-lg" style='background-image: url("https://fraganciasdelujo.com/cdn/shop/products/versace-dylan-blue-perfume.jpg?v=1652300353");'></div>
+                                        <div class="absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                            <button class="view-details-btn px-4 py-2 bg-primary text-white rounded-full text-sm font-semibold">Ver Detalles</button>
+                                        </div>
+                                    </div>
+                                    <div class="mt-4">
+                                        <h4 class="font-medium text-gray-800 dark:text-gray-200">Versace Dylan Blue</h4>
+                                        <p class="text-sm text-gray-500 dark:text-gray-400">$120.000</p>
+                                    </div>
+                                </div>
+                                <!-- Producto 4 -->
+                                <div class="group product-card" data-product="rosa-intensa">
+                                    <div class="relative overflow-hidden rounded-lg">
+                                        <div class="w-full bg-center bg-no-repeat aspect-[3/4] bg-cover rounded-lg" style='background-image: url("https://www.perfumeriaslaguna.com/images/productos/rosa-intensa.jpg");'></div>
+                                        <div class="absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                            <button class="view-details-btn px-4 py-2 bg-primary text-white rounded-full text-sm font-semibold">Ver Detalles</button>
+                                        </div>
+                                    </div>
+                                    <div class="mt-4">
+                                        <h4 class="font-medium text-gray-800 dark:text-gray-200">Rosa Intensa</h4>
+                                        <p class="text-sm text-gray-500 dark:text-gray-400">$110.000</p>
+                                    </div>
+                                </div>
+                                <!-- Producto 5 -->
+                                <div class="group product-card" data-product="citrus-bliss">
+                                    <div class="relative overflow-hidden rounded-lg">
+                                        <div class="w-full bg-center bg-no-repeat aspect-[3/4] bg-cover rounded-lg" style='background-image: url("https://www.fragrantica.com/images/perfume/123/123456.jpg");'></div>
+                                        <div class="absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                            <button class="view-details-btn px-4 py-2 bg-primary text-white rounded-full text-sm font-semibold">Ver Detalles</button>
+                                        </div>
+                                    </div>
+                                    <div class="mt-4">
+                                        <h4 class="font-medium text-gray-800 dark:text-gray-200">Citrus Bliss</h4>
+                                        <p class="text-sm text-gray-500 dark:text-gray-400">$90.000</p>
+                                    </div>
+                                </div>
+                                <!-- Producto 6 -->
+                                <div class="group product-card" data-product="amber-night">
+                                    <div class="relative overflow-hidden rounded-lg">
+                                        <div class="w-full bg-center bg-no-repeat aspect-[3/4] bg-cover rounded-lg" style='background-image: url("https://www.perfumespremium.com/images/amber-night.jpg");'></div>
+                                        <div class="absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                            <button class="view-details-btn px-4 py-2 bg-primary text-white rounded-full text-sm font-semibold">Ver Detalles</button>
+                                        </div>
+                                    </div>
+                                    <div class="mt-4">
+                                        <h4 class="font-medium text-gray-800 dark:text-gray-200">Amber Night</h4>
+                                        <p class="text-sm text-gray-500 dark:text-gray-400">$130.000</p>
+                                    </div>
+                                </div>
+                                <!-- Producto 7 -->
+                                <div class="group product-card" data-product="gardenia-blanca">
+                                    <div class="relative overflow-hidden rounded-lg">
+                                        <div class="w-full bg-center bg-no-repeat aspect-[3/4] bg-cover rounded-lg" style='background-image: url("https://www.perfumeriaslaguna.com/images/productos/gardenia-blanca.jpg");'></div>
+                                        <div class="absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                            <button class="view-details-btn px-4 py-2 bg-primary text-white rounded-full text-sm font-semibold">Ver Detalles</button>
+                                        </div>
+                                    </div>
+                                    <div class="mt-4">
+                                        <h4 class="font-medium text-gray-800 dark:text-gray-200">Gardenia Blanca</h4>
+                                        <p class="text-sm text-gray-500 dark:text-gray-400">$105.000</p>
+                                    </div>
+                                </div>
+                                <!-- Producto 8 -->
+                                <div class="group product-card" data-product="oud-royal">
+                                    <div class="relative overflow-hidden rounded-lg">
+                                        <div class="w-full bg-center bg-no-repeat aspect-[3/4] bg-cover rounded-lg" style='background-image: url("https://www.fragrantica.com/images/perfume/oud-royal.jpg");'></div>
+                                        <div class="absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                            <button class="view-details-btn px-4 py-2 bg-primary text-white rounded-full text-sm font-semibold">Ver Detalles</button>
+                                        </div>
+                                    </div>
+                                    <div class="mt-4">
+                                        <h4 class="font-medium text-gray-800 dark:text-gray-200">Oud Royal</h4>
+                                        <p class="text-sm text-gray-500 dark:text-gray-400">$150.000</p>
+                                    </div>
+                                </div>
+                                <!-- Producto 9 -->
+                                <div class="group product-card" data-product="vanilla-dream">
+                                    <div class="relative overflow-hidden rounded-lg">
+                                        <div class="w-full bg-center bg-no-repeat aspect-[3/4] bg-cover rounded-lg" style='background-image: url("https://www.perfumespremium.com/images/vanilla-dream.jpg");'></div>
+                                        <div class="absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                            <button class="view-details-btn px-4 py-2 bg-primary text-white rounded-full text-sm font-semibold">Ver Detalles</button>
+                                        </div>
+                                    </div>
+                                    <div class="mt-4">
+                                        <h4 class="font-medium text-gray-800 dark:text-gray-200">Vanilla Dream</h4>
+                                        <p class="text-sm text-gray-500 dark:text-gray-400">$115.000</p>
+                                    </div>
+                                </div>
+                                <!-- Producto 10 -->
+                                <div class="group product-card" data-product="coco-paradise">
+                                    <div class="relative overflow-hidden rounded-lg">
+                                        <div class="w-full bg-center bg-no-repeat aspect-[3/4] bg-cover rounded-lg" style='background-image: url("https://www.fragrantica.com/images/perfume/coco-paradise.jpg");'></div>
+                                        <div class="absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                            <button class="view-details-btn px-4 py-2 bg-primary text-white rounded-full text-sm font-semibold">Ver Detalles</button>
+                                        </div>
+                                    </div>
+                                    <div class="mt-4">
+                                        <h4 class="font-medium text-gray-800 dark:text-gray-200">Coco Paradise</h4>
+                                        <p class="text-sm text-gray-500 dark:text-gray-400">$98.000</p>
+                                    </div>
+                                </div>
+                                <!-- Producto 11 -->
+                                <div class="group product-card" data-product="spicy-woods">
+                                    <div class="relative overflow-hidden rounded-lg">
+                                        <div class="w-full bg-center bg-no-repeat aspect-[3/4] bg-cover rounded-lg" style='background-image: url("https://www.perfumeriaslaguna.com/images/productos/spicy-woods.jpg");'></div>
+                                        <div class="absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                            <button class="view-details-btn px-4 py-2 bg-primary text-white rounded-full text-sm font-semibold">Ver Detalles</button>
+                                        </div>
+                                    </div>
+                                    <div class="mt-4">
+                                        <h4 class="font-medium text-gray-800 dark:text-gray-200">Spicy Woods</h4>
+                                        <p class="text-sm text-gray-500 dark:text-gray-400">$125.000</p>
+                                    </div>
+                                </div>
+                                <!-- Producto 12 -->
+                                <div class="group product-card" data-product="fresh-mint">
+                                    <div class="relative overflow-hidden rounded-lg">
+                                        <div class="w-full bg-center bg-no-repeat aspect-[3/4] bg-cover rounded-lg" style='background-image: url("https://www.fragrantica.com/images/perfume/fresh-mint.jpg");'></div>
+                                        <div class="absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                            <button class="view-details-btn px-4 py-2 bg-primary text-white rounded-full text-sm font-semibold">Ver Detalles</button>
+                                        </div>
+                                    </div>
+                                    <div class="mt-4">
+                                        <h4 class="font-medium text-gray-800 dark:text-gray-200">Fresh Mint</h4>
+                                        <p class="text-sm text-gray-500 dark:text-gray-400">$85.000</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PÁGINA DE DETALLES DEL PRODUCTO -->
+        <div id="producto" class="page-section">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-10">
+                <div class="max-w-5xl mx-auto">
+                    <!-- Breadcrumb -->
+                    <div class="text-sm mb-6">
+                        <button class="text-primary/80 hover:text-primary nav-btn" data-page="perfumes">Perfumes</button>
+                        <span class="mx-2 text-primary/50">/</span>
+                        <span class="text-background-dark/80 dark:text-background-light/80">Valentino Uomo</span>
+                    </div>
+                    
+                    <!-- Detalles del producto -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-16">
+                        <div class="w-full h-auto rounded-xl overflow-hidden shadow-lg">
+                            <img alt="Perfume bottle" class="w-full h-full object-cover" src="https://attoperfumes.com.co/cdn/shop/products/WhatsAppImage2022-05-11at3.17.12PM.jpg?v=1652300353"/>
+                        </div>
+                        <div class="flex flex-col">
+                                <!-- Descripción del perfume -->
+        <div class="md:w-2/3">
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">VALENTINO UOMO</h3>
+            <p class="text-lg italic text-gray-600 dark:text-gray-300 mb-4">Elegancia Italiana Moderna</p>
+            
+            <p class="text-gray-700 dark:text-gray-300 mb-6">
+                "Valentino Uomo es la esencia de la elegancia masculina contemporánea. Una fragancia sofisticada que combina la tradición sartorial italiana con un toque moderno y urbano."
+            </p>
+            
+            <!-- Notas olfativas -->
+            <div class="mb-6">
+                <h4 class="text-lg font-semibold text-gray-900 dark:text-white mb-3">Notas Olfativas</h4>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="bg-primary/10 dark:bg-primary/20 p-3 rounded-lg">
+                        <p class="font-medium text-primary dark:text-yellow-300">💚</p>
+                        <p class="text-sm text-gray-600 dark:text-gray-300">Bergamota italiana fresca</p>
+                    </div>
+                    <div class="bg-primary/10 dark:bg-primary/20 p-3 rounded-lg">
+                        <p class="font-medium text-primary dark:text-yellow-300">🤎</p>
+                        <p class="text-sm text-gray-600 dark:text-gray-300">Notas amaderadas elegantes</p>
+                    </div>
+                    <div class="bg-primary/10 dark:bg-primary/20 p-3 rounded-lg">
+                        <p class="font-medium text-primary dark:text-yellow-300">🍦</p>
+                        <p class="text-sm text-gray-600 dark:text-gray-300">Toque cremoso de vainilla</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Personalidad -->
+            <div class="mb-6">
+                <h4 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">Personalidad</h4>
+                <div class="flex flex-wrap gap-2">
+                    <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm">🎩 Elegante</span>
+                    <span class="px-3 py-1 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 rounded-full text-sm">💼 Sofisticado</span>
+                    <span class="px-3 py-1 bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 rounded-full text-sm">🌆 Urbano</span>
+                    <span class="px-3 py-1 bg-orange-100 dark:bg-orange-900 text-orange-800 dark:text-orange-200 rounded-full text-sm">👔 Versátil</span>
+                </div>
+            </div>
+            
+            <!-- Ocasiones ideales -->
+            <div class="mb-6">
+                <h4 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">Ocasiones Ideales</h4>
+                <div class="flex items-center gap-4 text-sm text-gray-600 dark:text-gray-400">
+                    <div class="flex items-center gap-1">
+                        <span>💒</span>
+                        <span>Eventos formales</span>
+                    </div>
+                    <div class="flex items-center gap-1">
+                        <span>💼</span>
+                        <span>Reuniones de negocios</span>
+                    </div>
+                    <div class="flex items-center gap-1">
+                        <span>🎭</span>
+                        <span>Citas especiales</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Frase destacada -->
+            <div class="bg-primary/20 dark:bg-primary/30 p-4 rounded-lg border-l-4 border-primary">
+                <p class="text-center font-medium text-gray-800 dark:text-white">
+                    "La elegancia atemporal meets la modernidad urbana"
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+                            <!-- Más detalles del producto... -->
+                            <!-- Detalles de cada perfume (ocultos por defecto, se muestran según selección) -->
+                            <!-- Detalles de cada perfume (ocultos por defecto, se muestran según selección) -->
+                            <div id="detalle-brisa-acuatica" class="hidden">
+                                <h3 class="text-2xl font-bold mb-2">Valentino Uomo</h3>
+                                <p class="italic text-gray-600 dark:text-gray-300 mb-4">Brisa Acuática</p>
+                                <p class="mb-4">Un aroma refrescante para el hombre activo. Combina bergamota, notas marinas y madera de cedro.</p>
+                                <ul class="mb-4">
+                                    <li><strong>Notas:</strong> Bergamota, notas acuáticas, cedro.</li>
+                                    <li><strong>Personalidad:</strong> Activo, fresco, moderno.</li>
+                                    <li><strong>Ocasiones:</strong> Día, deporte, oficina.</li>
+                                </ul>
+                                <div class="bg-primary/20 p-3 rounded">Ideal para quienes buscan energía y frescura.</div>
+                            </div>
+                            <div id="detalle-flor-citrica" class="hidden">
+                                <h3 class="text-2xl font-bold mb-2">Odyssey Mandarin Sky</h3>
+                                <p class="italic text-gray-600 dark:text-gray-300 mb-4">Flor Cítrica</p>
+                                <p class="mb-4">Notas cítricas y frescas para cualquier ocasión. Mandarina, flor de azahar y almizcle blanco.</p>
+                                <ul class="mb-4">
+                                    <li><strong>Notas:</strong> Mandarina, flor de azahar, almizcle.</li>
+                                    <li><strong>Personalidad:</strong> Alegre, espontáneo, juvenil.</li>
+                                    <li><strong>Ocasiones:</strong> Diario, primavera, reuniones.</li>
+                                </ul>
+                                <div class="bg-primary/20 p-3 rounded">Perfecto para días soleados y momentos casuales.</div>
+                            </div>
+                            <div id="detalle-noir-elegance" class="hidden">
+                                <h3 class="text-2xl font-bold mb-2">Versace Dylan Blue</h3>
+                                <p class="italic text-gray-600 dark:text-gray-300 mb-4">Noir Elegance</p>
+                                <p class="mb-4">Intenso y misterioso, para noches elegantes. Mezcla de pomelo, incienso y haba tonka.</p>
+                                <ul class="mb-4">
+                                    <li><strong>Notas:</strong> Pomelo, incienso, haba tonka.</li>
+                                    <li><strong>Personalidad:</strong> Misterioso, sofisticado, nocturno.</li>
+                                    <li><strong>Ocasiones:</strong> Noche, eventos, citas.</li>
+                                </ul>
+                                <div class="bg-primary/20 p-3 rounded">Para quienes buscan destacar en la noche.</div>
+                            </div>
+                            <div id="detalle-rosa-intensa" class="hidden">
+                                <h3 class="text-2xl font-bold mb-2">Rosa Intensa</h3>
+                                <p class="italic text-gray-600 dark:text-gray-300 mb-4">Romántico y femenino</p>
+                                <p class="mb-4">Ideal para el día, con rosa búlgara, peonía y sándalo.</p>
+                                <ul class="mb-4">
+                                    <li><strong>Notas:</strong> Rosa búlgara, peonía, sándalo.</li>
+                                    <li><strong>Personalidad:</strong> Romántica, delicada, alegre.</li>
+                                    <li><strong>Ocasiones:</strong> Día, primavera, citas.</li>
+                                </ul>
+                                <div class="bg-primary/20 p-3 rounded">Para quienes aman lo floral y femenino.</div>
+                            </div>
+                            <div id="detalle-citrus-bliss" class="hidden">
+                                <h3 class="text-2xl font-bold mb-2">Citrus Bliss</h3>
+                                <p class="italic text-gray-600 dark:text-gray-300 mb-4">Energía cítrica</p>
+                                <p class="mb-4">Energía cítrica para días soleados. Limón, naranja y vetiver.</p>
+                                <ul class="mb-4">
+                                    <li><strong>Notas:</strong> Limón, naranja, vetiver.</li>
+                                    <li><strong>Personalidad:</strong> Dinámico, alegre, vibrante.</li>
+                                    <li><strong>Ocasiones:</strong> Verano, actividades al aire libre.</li>
+                                </ul>
+                                <div class="bg-primary/20 p-3 rounded">Refrescante y revitalizante.</div>
+                            </div>
+                            <div id="detalle-amber-night" class="hidden">
+                                <h3 class="text-2xl font-bold mb-2">Amber Night</h3>
+                                <p class="italic text-gray-600 dark:text-gray-300 mb-4">Notas cálidas</p>
+                                <p class="mb-4">Notas cálidas y ambarinas para la noche. Ámbar, vainilla y pachulí.</p>
+                                <ul class="mb-4">
+                                    <li><strong>Notas:</strong> Ámbar, vainilla, pachulí.</li>
+                                    <li><strong>Personalidad:</strong> Apasionado, cálido, envolvente.</li>
+                                    <li><strong>Ocasiones:</strong> Noche, invierno, eventos.</li>
+                                </ul>
+                                <div class="bg-primary/20 p-3 rounded">Ideal para noches especiales.</div>
+                            </div>
+                            <div id="detalle-gardenia-blanca" class="hidden">
+                                <h3 class="text-2xl font-bold mb-2">Gardenia Blanca</h3>
+                                <p class="italic text-gray-600 dark:text-gray-300 mb-4">Fresco y floral</p>
+                                <p class="mb-4">Perfecto para primavera. Gardenia, jazmín y almizcle.</p>
+                                <ul class="mb-4">
+                                    <li><strong>Notas:</strong> Gardenia, jazmín, almizcle.</li>
+                                    <li><strong>Personalidad:</strong> Natural, delicada, optimista.</li>
+                                    <li><strong>Ocasiones:</strong> Primavera, diario, reuniones.</li>
+                                </ul>
+                                <div class="bg-primary/20 p-3 rounded">Para quienes aman lo floral y fresco.</div>
+                            </div>
+                            <div id="detalle-oud-royal" class="hidden">
+                                <h3 class="text-2xl font-bold mb-2">Oud Royal</h3>
+                                <p class="italic text-gray-600 dark:text-gray-300 mb-4">Exótico y lujoso</p>
+                                <p class="mb-4">Para ocasiones especiales. Oud, rosa y cuero.</p>
+                                <ul class="mb-4">
+                                    <li><strong>Notas:</strong> Oud, rosa, cuero.</li>
+                                    <li><strong>Personalidad:</strong> Exótico, sofisticado, intenso.</li>
+                                    <li><strong>Ocasiones:</strong> Gala, noche, celebraciones.</li>
+                                </ul>
+                                <div class="bg-primary/20 p-3 rounded">Un lujo para los sentidos.</div>
+                            </div>
+                            <div id="detalle-vanilla-dream" class="hidden">
+                                <h3 class="text-2xl font-bold mb-2">Vanilla Dream</h3>
+                                <p class="italic text-gray-600 dark:text-gray-300 mb-4">Dulce y envolvente</p>
+                                <p class="mb-4">Para momentos acogedores. Vainilla, caramelo y almendra.</p>
+                                <ul class="mb-4">
+                                    <li><strong>Notas:</strong> Vainilla, caramelo, almendra.</li>
+                                    <li><strong>Personalidad:</strong> Dulce, cálida, acogedora.</li>
+                                    <li><strong>Ocasiones:</strong> Invierno, hogar, relax.</li>
+                                </ul>
+                                <div class="bg-primary/20 p-3 rounded">Ideal para quienes buscan confort.</div>
+                            </div>
+                            <div id="detalle-coco-paradise" class="hidden">
+                                <h3 class="text-2xl font-bold mb-2">Coco Paradise</h3>
+                                <p class="italic text-gray-600 dark:text-gray-300 mb-4">Notas tropicales</p>
+                                <p class="mb-4">Para el verano. Coco, piña y flores blancas.</p>
+                                <ul class="mb-4">
+                                    <li><strong>Notas:</strong> Coco, piña, flores blancas.</li>
+                                    <li><strong>Personalidad:</strong> Tropical, alegre, relajada.</li>
+                                    <li><strong>Ocasiones:</strong> Playa, verano, vacaciones.</li>
+                                </ul>
+                                <div class="bg-primary/20 p-3 rounded">Siente el paraíso en tu piel.</div>
+                            </div>
+                            <div id="detalle-spicy-woods" class="hidden">
+                                <h3 class="text-2xl font-bold mb-2">Spicy Woods</h3>
+                                <p class="italic text-gray-600 dark:text-gray-300 mb-4">Aromas especiados y madera</p>
+                                <p class="mb-4">Para el hombre moderno. Pimienta negra, cedro y vetiver.</p>
+                                <ul class="mb-4">
+                                    <li><strong>Notas:</strong> Pimienta negra, cedro, vetiver.</li>
+                                    <li><strong>Personalidad:</strong> Masculino, fuerte, audaz.</li>
+                                    <li><strong>Ocasiones:</strong> Diario, oficina, noche.</li>
+                                </ul>
+                                <div class="bg-primary/20 p-3 rounded">Para quienes buscan carácter y profundidad.</div>
+                            </div>
+                            <div id="detalle-fresh-mint" class="hidden">
+                                <h3 class="text-2xl font-bold mb-2">Fresh Mint</h3>
+                                <p class="italic text-gray-600 dark:text-gray-300 mb-4">Refrescante y revitalizante</p>
+                                <p class="mb-4">Para todos los días. Menta, limón y almizcle blanco.</p>
+                                <ul class="mb-4">
+                                    <li><strong>Notas:</strong> Menta, limón, almizcle blanco.</li>
+                                    <li><strong>Personalidad:</strong> Refrescante, limpio, versátil.</li>
+                                    <li><strong>Ocasiones:</strong> Diario, verano, deporte.</li>
+                                </ul>
+                                <div class="bg-primary/20 p-3 rounded">Siente la frescura en cada momento.</div>
+                            </div>
+
+                            <script>
+                                // Mostrar el detalle correcto según el producto seleccionado
+                                function mostrarDetallePerfume(productKey) {
+                                    [
+                                        "detalle-brisa-acuatica",
+                                        "detalle-flor-citrica",
+                                        "detalle-noir-elegance",
+                                        "detalle-rosa-intensa",
+                                        "detalle-citrus-bliss",
+                                        "detalle-amber-night",
+                                        "detalle-gardenia-blanca",
+                                        "detalle-oud-royal",
+                                        "detalle-vanilla-dream",
+                                        "detalle-coco-paradise",
+                                        "detalle-spicy-woods",
+                                        "detalle-fresh-mint"
+                                    ].forEach(id => {
+                                        const el = document.getElementById(id);
+                                        if (el) el.classList.add("hidden");
+                                    });
+                                    const detalle = document.getElementById("detalle-" + productKey);
+                                    if (detalle) detalle.classList.remove("hidden");
+                                }
+
+                                // Detecta click en cards y botones de detalles
+                                document.querySelectorAll('.product-card, .view-details-btn').forEach(element => {
+                                    element.addEventListener('click', function(e) {
+                                        let productKey = this.getAttribute('data-product');
+                                        if (!productKey && this.closest('.product-card')) {
+                                            productKey = this.closest('.product-card').getAttribute('data-product');
+                                        }
+                                        document.querySelectorAll('.page-section').forEach(section => {
+                                            section.classList.remove('active');
+                                        });
+                                        document.getElementById('producto').classList.add('active');
+                                        window.scrollTo(0, 0);
+                                        if (productKey) mostrarDetallePerfume(productKey);
+                                        e.stopPropagation();
+                                    });
+                                });
+
+                                // Por defecto muestra el primer detalle
+                                document.addEventListener('DOMContentLoaded', function() {
+                                    mostrarDetallePerfume('brisa-acuatica');
+                                });
+                            </script>
+                            <!-- BOTÓN AÑADIR AL CARRITO -->
+<div class="mt-8 pt-6 border-t border-gray-200 dark:border-gray-700">
+    <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div class="flex items-center gap-4">
+            <!-- Selector de cantidad -->
+            <div class="flex items-center border border-gray-300 dark:border-gray-600 rounded-lg">
+                <button class="px-3 py-2 text-gray-600 dark:text-gray-400 hover:text-primary">-</button>
+                <span class="px-4 py-2 text-gray-800 dark:text-gray-200">1</span>
+                <button class="px-3 py-2 text-gray-600 dark:text-gray-400 hover:text-primary">+</button>
+            </div>
+            
+            <!-- Precio -->
+            <div>
+                <p class="text-2xl font-bold text-primary">$100.000</p>
+                <p class="text-sm text-gray-500 dark:text-gray-400">100 ml</p>
+            </div>
+        </div>
+        
+        <!-- Botón Añadir al Carrito -->
+        <button class="w-full sm:w-auto bg-primary hover:bg-primary/90 text-white font-bold py-3 px-8 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg flex items-center justify-center gap-2">
+            <span class="material-symbols-outlined text-lg">shopping_bag</span>
+            Añadir al Carrito
+        </button>
+    </div>
+    
+    <!-- Envío gratuito -->
+    <div class="mt-4 text-center">
+        <p class="text-sm text-green-600 dark:text-green-400 flex items-center justify-center gap-1">
+            <span class="material-symbols-outlined text-lg">local_shipping</span>
+            ¡Envío gratis en compras superiores a $300.000!
+        </p>
+    </div>
+</div>
+
+        <!-- PÁGINAS EXTRA (puedes agregar más) -->
+        <div id="nosotros" class="page-section">
+            <div class="container mx-auto px-4 py-10">
+                <h2 class="text-3xl font-bold mb-6">Sobre Nosotros</h2>
+                <p>Contenido sobre la empresa...</p>
+            </div>
+        </div>
+
+        <div id="contacto" class="page-section">
+            <div class="container mx-auto px-4 py-10">
+                <h2 class="text-3xl font-bold mb-6">Contacto</h2>
+                <p>Formulario de contacto...</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-primary/20">
+        <div class="mx-auto max-w-6xl px-5 py-10 text-center">
+            <div class="flex flex-wrap items-center justify-center gap-x-8 gap-y-4 mb-6 text-sm">
+                <button class="nav-btn hover:text-primary transition-colors" data-page="inicio">Inicio</button>
+                <button class="nav-btn hover:text-primary transition-colors" data-page="perfumes">Perfumes</button>
+                <button class="nav-btn hover:text-primary transition-colors" data-page="nosotros">Nosotros</button>
+                <button class="nav-btn hover:text-primary transition-colors" data-page="contacto">Contacto</button>
+            </div>
+            <p class="text-sm text-background-dark/60 dark:text-background-light/60">© 2024 Perfumes Jordy's. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+</div>
+
+<script>
+    // Navegación entre páginas
+    document.querySelectorAll('.nav-btn').forEach(button => {
+        button.addEventListener('click', function() {
+            const targetPage = this.getAttribute('data-page');
+            
+            // Ocultar todas las páginas
+            document.querySelectorAll('.page-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Mostrar la página objetivo
+            document.getElementById(targetPage).classList.add('active');
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+        });
+    });
+
+    // Navegación a detalles del producto
+    document.querySelectorAll('.product-card, .view-details-btn').forEach(element => {
+        element.addEventListener('click', function() {
+            // Ocultar todas las páginas
+            document.querySelectorAll('.page-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Mostrar página de detalles
+            document.getElementById('producto').classList.add('active');
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+        });
+    });
+
+    // Filtros de productos
+    document.querySelectorAll('.filter-btn, .category-btn').forEach(button => {
+        button.addEventListener('click', function() {
+            // Remover activo de todos los botones del mismo grupo
+            const parent = this.parentElement;
+            parent.querySelectorAll('button').forEach(btn => {
+                btn.classList.remove('bg-primary/20', 'dark:bg-primary/30', 'border-primary', 'text-primary');
+                btn.classList.add('bg-background-light', 'dark:bg-background-dark', 'border-primary/30');
+            });
+            
+            // Activar el botón clickeado
+            this.classList.add('bg-primary/20', 'dark:bg-primary/30', 'border-primary', 'text-primary');
+            this.classList.remove('bg-background-light', 'dark:bg-background-dark', 'border-primary/30');
+        });
+    });
+</script>
+</body>
+</html>
+
